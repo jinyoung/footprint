@@ -21,8 +21,12 @@ spring:
           uri: http://localhost:8084
           predicates:
             - Path=/molds/**, 
-        - id: frontend
+        - id: egov-default-backend
           uri: http://localhost:8080
+          predicates:
+            - Path=/board/**, /auth/**
+        - id: frontend
+          uri: http://localhost:3000
           predicates:
             - Path=/**
 #>>> API Gateway / Routes
@@ -57,6 +61,9 @@ spring:
           uri: http://moldService:8080
           predicates:
             - Path=/molds/**, 
+        - id: egov-default-backend
+          uri: http://default-backend:8080
+          predicates:        
         - id: frontend
           uri: http://frontend:8080
           predicates:
